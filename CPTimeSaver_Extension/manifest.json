@@ -1,0 +1,35 @@
+{
+    "manifest_version": 2,
+    "name": "Costing(Time)Point Time Saver",
+    "short_name": "CPTimeSaver",
+    "version": "6.9.0",
+    "description": "Suite of time saving features on the new Deltek time tracking software because it costs more time than previous system to use. as of 5/10/2021",
+    "icons": { 
+        "16": "icons/icon16.png",
+        "32": "icons/icon32.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png" },
+    "browser_action": {
+        "default_icon": "icons/icon32.png",
+        "default_popup": "popup.html"
+    },
+    "content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'",
+    "permissions": [
+        "activeTab",
+        "storage"
+    ],
+    "content_scripts": [
+      {
+        "matches": [
+            "https://cp.gtri.gatech.edu/*"
+        ],
+        "css": ["button_styling.css"],
+        "web_accessible_resources": [
+            "icons/*"
+        ],
+        "all_frames": true,
+        "js": ["jquery-3.6.0.min.js", "content.js"],
+        "run_at": "document_end"
+      }
+    ]
+}
